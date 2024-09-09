@@ -12,9 +12,9 @@ def home(request):
 
 
 def all_books(request):
-    books = Book.objects.all()
+    books = Book.objects.all().values()
     context = {'books': books}
-    return HttpResponse('all_books.html', context)
+    return render(request, 'all_books.html', context)
 
 
 def add_book(request):
@@ -22,11 +22,11 @@ def add_book(request):
         form = BookForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("all")
+            return redirect("library")
     return render(request, "add_book.html", {'form': BookForm()})
 
 
 def detail_book(request, name):
     book = Book.objects.get(name=name)
     context = {'book': book}
-    return HttpResponse('detail_book.html', context)
+    return render(request, 'detail.html', context)

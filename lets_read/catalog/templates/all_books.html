@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>library</title>
 </head>
-<body type="background-color:black;">
+<body>
     {% for x in books %}
-        <li type="color = yellow;">{{ x.name }} {{ x.autor }}</li>
+        <p><a href = "http://127.0.0.1:8000/library/{{ x.name }}">{{ x.name }}</a> {{ x.author }} {{ x.year }}</p>
     {% endfor %}
+
+    <a href="add_book">add book</a><a href="http://127.0.0.1:8000/"> home</a>
 </body>
 </html>

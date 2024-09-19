@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>library</title>
-</head>
-<body>
-    {% for x in books %}
-        <p><a href = "http://127.0.0.1:8000/library/{{ x.name }}">{{ x.name }}</a> {{ x.author }} {{ x.year }}</p>
-    {% endfor %}
+{% extends "master.html" %}
 
-    <a href="add_book">add book</a><a href="http://127.0.0.1:8000/"> home</a>
-</body>
-</html>
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+<h1>Book List</h1>
+    <a href="{% url 'add_book' %}">Add New Book</a>
+    <ul>
+        {% for book in object_list %}
+            <li>
+                <a href="{% url 'deatil_book' book.pk %}">{{ book.name }}</a> by {{ book.author }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

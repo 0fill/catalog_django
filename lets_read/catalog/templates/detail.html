@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>book.name</title>
+{% extends "master.html" %}
 
-</head>
-<header>
-    <a href="http://127.0.0.1:8000/library/">library</a>
-</header>
-<body>
-    detail here:
-    {{ book.info }}
 
-</body>
-</html>
+{% block title %}
+
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ object.name }}</h1>
+    <p><strong>Author:</strong> {{ object.author }}</p>
+    <p><strong>Published year:</strong> {{ object.year }}</p>
+    <p><strong>about:</strong> {{ object.info }}</p>
+    <a href="">Edit</a>
+    <a href="">Delete</a>
+    <a href="{% url 'library' %}">Back to Book List</a>
+{% endblock %}
